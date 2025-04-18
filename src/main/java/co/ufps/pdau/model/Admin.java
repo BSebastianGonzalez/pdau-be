@@ -23,5 +23,6 @@ public class Admin {
     private String direccion;
     private String correo;
     private String contrasenia;
+    private byte tipo;
 
 }
