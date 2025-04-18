@@ -1,9 +1,6 @@
 package co.ufps.pdau.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin {
+public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +20,6 @@ public class Admin {
     private String direccion;
     private String correo;
     private String contrasenia;
-    private byte tipo;
+    private Role role;
 
 }

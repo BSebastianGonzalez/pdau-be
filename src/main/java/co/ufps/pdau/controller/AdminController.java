@@ -1,5 +1,7 @@
 package co.ufps.pdau.controller;
 
+import co.ufps.pdau.DTO.LoginRequest;
+import co.ufps.pdau.DTO.LoginResponse;
 import co.ufps.pdau.model.Admin;
 import co.ufps.pdau.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -32,9 +34,9 @@ public class AdminController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Admin> updateUser(@PathVariable Long id, @RequestBody Admin adminDetails) {
+    public ResponseEntity<Admin> updateAdmin(@PathVariable Long id, @RequestBody Admin adminDetails) {
         try {
-            Admin updatedAdmin = adminService.updateAdmin(id, adminDetails);
+            Admin updatedAdmin = adminService.updateUser(id, adminDetails);
             return ResponseEntity.ok(updatedAdmin);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
@@ -50,5 +52,11 @@ public class AdminController {
     @GetMapping
     public String welcome(){
         return "Welcome to Admin Controller";
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+        LoginResponse response = adminService.login(request.getCorreo(), request.getContrasenia());
+        return ResponseEntity.ok(response);
     }
 }
