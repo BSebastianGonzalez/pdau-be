@@ -14,7 +14,7 @@ import java.util.List;
 public class AdminController {
     private final AdminService adminService;
 
-    @GetMapping
+    @GetMapping("/list")
     public List<Admin> getAllAdmins() {
         return adminService.getAllAdmins();
     }
@@ -45,5 +45,10 @@ public class AdminController {
     public ResponseEntity<Void> deleteAdmin(@PathVariable Long id) {
         adminService.deleteAdmin(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public String welcome(){
+        return "Welcome to Admin Controller";
     }
 }

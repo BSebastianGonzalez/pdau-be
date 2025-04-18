@@ -36,6 +36,7 @@ public class AdminService {
             admin.setDireccion(adminDetails.getDireccion());
             admin.setCorreo(adminDetails.getCorreo());
             admin.setContrasenia(adminDetails.getContrasenia());
+            admin.setTipo(adminDetails.getTipo());
             return adminRepository.save(admin);
         }).orElseThrow(() -> new RuntimeException("Admin not found"));
     }
