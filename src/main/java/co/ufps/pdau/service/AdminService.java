@@ -1,5 +1,6 @@
 package co.ufps.pdau.service;
 
+import co.ufps.pdau.DTO.LoginResponse;
 import co.ufps.pdau.model.Admin;
 import co.ufps.pdau.repository.AdminRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class AdminService {
         return adminRepository.save(admin);
     }
 
-    public Admin updateAdmin(Long id, Admin adminDetails) {
+    public Admin updateUser(Long id, Admin adminDetails) {
         return adminRepository.findById(id).map(admin -> {
             admin.setCedula(adminDetails.getCedula());
             admin.setNombre(adminDetails.getNombre());
@@ -36,12 +37,27 @@ public class AdminService {
             admin.setDireccion(adminDetails.getDireccion());
             admin.setCorreo(adminDetails.getCorreo());
             admin.setContrasenia(adminDetails.getContrasenia());
-            admin.setTipo(adminDetails.getTipo());
+            admin.setRole(adminDetails.getRole());
             return adminRepository.save(admin);
         }).orElseThrow(() -> new RuntimeException("Admin not found"));
     }
 
     public void deleteAdmin(Long id) {
         adminRepository.deleteById(id);
+    }
+
+    public LoginResponse login(String correo, String contrasenia) {
+        Optional<Admin> adminOptional = adminRepository.findByCorreo(correo);
+
+        if (adminOptional.isPresent()) {
+            Admin admin = adminOptional.get();
+            if (admin.getContrasenia().equals(contrasenia)) {
+                return new LoginResponse(true, "Inicio de sesión exitoso", admin);
+            } else {
+                return new LoginResponse(false, "Contraseña incorrecta", null);
+            }
+        } else {
+            return new LoginResponse(false, "Correo no registrado", null);
+        }
     }
 }
