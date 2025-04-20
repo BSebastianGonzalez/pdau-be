@@ -6,22 +6,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Categoria {
+public class Carrera {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private String descripcion;
 
-    @ManyToMany(mappedBy = "categorias")
+    @ManyToOne
+    @JoinColumn(name = "id_facultad", nullable = false)
     @JsonBackReference
-    private List<Denuncia> denuncias = new ArrayList<>();
+    private Facultad facultad;
 }

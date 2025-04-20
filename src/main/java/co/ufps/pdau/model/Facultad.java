@@ -1,6 +1,6 @@
 package co.ufps.pdau.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,15 +13,14 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Categoria {
+public class Facultad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private String descripcion;
 
-    @ManyToMany(mappedBy = "categorias")
-    @JsonBackReference
-    private List<Denuncia> denuncias = new ArrayList<>();
+    @OneToMany(mappedBy = "facultad", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Carrera> carreras = new ArrayList<>();
 }
