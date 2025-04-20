@@ -7,7 +7,6 @@ import co.ufps.pdau.model.Denuncia;
 import co.ufps.pdau.model.Facultad;
 import co.ufps.pdau.repository.CategoriaRepository;
 import co.ufps.pdau.service.CarreraService;
-import co.ufps.pdau.service.CategoriaService;
 import co.ufps.pdau.service.DenunciaService;
 import co.ufps.pdau.service.FacultadService;
 import lombok.RequiredArgsConstructor;
