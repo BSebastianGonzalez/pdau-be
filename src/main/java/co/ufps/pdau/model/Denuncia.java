@@ -24,15 +24,6 @@ public class Denuncia {
     private Date fechaCreacion;
     private String tokenSeguimiento;
 
-    @ManyToOne
-    @JoinColumn(name = "id_facultad")
-    private Facultad facultad;
-
-    @ManyToOne
-    @JoinColumn(name = "id_carrera")
-    @JsonBackReference
-    private Carrera carrera;
-
     @ManyToMany
     @JoinTable(
             name = "denuncia_categoria",
