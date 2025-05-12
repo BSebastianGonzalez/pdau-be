@@ -68,5 +68,11 @@ public class DenunciaController {
     public List<Denuncia> getDenunciasByCategoria(@PathVariable Long idCategoria) {
         return denunciaService.getDenunciasByCategoria(idCategoria);
     }
+
+    @GetMapping("/{id}/token")
+    public ResponseEntity<String> getTokenByDenunciaId(@PathVariable Long id) {
+        String token = denunciaService.getTokenByDenunciaId(id);
+        return ResponseEntity.ok(token);
+    }
 }
 

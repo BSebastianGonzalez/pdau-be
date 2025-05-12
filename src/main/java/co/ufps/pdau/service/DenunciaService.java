@@ -38,8 +38,6 @@ public class DenunciaService {
             denuncia.setDescripcion(denunciaDetails.getDescripcion());
             denuncia.setFechaCreacion(denunciaDetails.getFechaCreacion());
             denuncia.setTokenSeguimiento(denunciaDetails.getTokenSeguimiento());
-            denuncia.setFacultad(denunciaDetails.getFacultad());
-            denuncia.setCarrera(denunciaDetails.getCarrera());
             return denunciaRepository.save(denuncia);
         }).orElseThrow(() -> new RuntimeException("Denuncia not found"));
     }
@@ -50,6 +48,12 @@ public class DenunciaService {
 
     public List<Denuncia> getDenunciasByCategoria(Long idCategoria) {
         return denunciaRepository.findByCategorias_Id(idCategoria);
+    }
+
+    public String getTokenByDenunciaId(Long id) {
+        return denunciaRepository.findById(id)
+                .map(Denuncia::getTokenSeguimiento)
+                .orElseThrow(() -> new RuntimeException("Denuncia no encontrada"));
     }
 }
 
