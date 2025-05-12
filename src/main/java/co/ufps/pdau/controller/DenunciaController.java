@@ -3,6 +3,7 @@ package co.ufps.pdau.controller;
 import co.ufps.pdau.DTO.CrearDenunciaDTO;
 import co.ufps.pdau.model.Categoria;
 import co.ufps.pdau.model.Denuncia;
+import co.ufps.pdau.model.Estado;
 import co.ufps.pdau.repository.CategoriaRepository;
 import co.ufps.pdau.service.DenunciaService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/denuncias")
@@ -32,8 +35,7 @@ public class DenunciaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> crearDenuncia(@RequestBody CrearDenunciaDTO dto) {
-
+    public ResponseEntity<Map<String, String>> crearDenuncia(@RequestBody CrearDenunciaDTO dto) {
         // Buscar categorías por ID
         List<Categoria> categorias = categoriaRepository.findAllById(dto.getCategoriaIds());
 
@@ -43,9 +45,18 @@ public class DenunciaController {
         denuncia.setDescripcion(dto.getDescripcion());
         denuncia.setCategorias(categorias);  // Asignar las categorías
 
-        denunciaService.createDenuncia(denuncia);
+        Estado estado = new Estado();
+        estado.setId(1L); // ID del estado predeterminado
+        denuncia.setEstado(estado);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("Denuncia creada exitosamente.");
+        // Guardar la denuncia y obtener el token
+        Denuncia savedDenuncia = denunciaService.createDenuncia(denuncia);
+
+        // Crear la respuesta con el token
+        Map<String, String> response = new HashMap<>();
+        response.put("token", savedDenuncia.getTokenSeguimiento());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PutMapping("/{id}")
