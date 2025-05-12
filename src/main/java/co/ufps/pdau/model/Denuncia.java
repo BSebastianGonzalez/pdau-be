@@ -1,6 +1,7 @@
 package co.ufps.pdau.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,4 +34,9 @@ public class Denuncia {
     )
     @JsonManagedReference
     private List<Categoria> categorias = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "estado_id")
+    @JsonBackReference
+    private Estado estado;
 }

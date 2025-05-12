@@ -12,7 +12,5 @@ import java.util.List;
 public class CrearDenunciaDTO {
     private String titulo;
     private String descripcion;
-    private Long facultadId;
-    private Long carreraId;
     private List<Long> categoriaIds;
 }
