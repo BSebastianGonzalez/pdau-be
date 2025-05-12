@@ -1,6 +1,7 @@
 package co.ufps.pdau.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +31,6 @@ public class Denuncia {
             joinColumns = @JoinColumn(name = "id_denuncia"),
             inverseJoinColumns = @JoinColumn(name = "id_categoria")
     )
-    @JsonBackReference
+    @JsonManagedReference
     private List<Categoria> categorias = new ArrayList<>();
 }
