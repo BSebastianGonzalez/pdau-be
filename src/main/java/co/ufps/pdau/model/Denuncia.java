@@ -37,6 +37,6 @@ public class Denuncia {
 
     @ManyToOne
     @JoinColumn(name = "estado_id")
-    @JsonBackReference
+    @JsonManagedReference
     private Estado estado;
 }

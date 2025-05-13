@@ -1,6 +1,7 @@
 package co.ufps.pdau.controller;
 
 import co.ufps.pdau.DTO.CrearDenunciaDTO;
+import co.ufps.pdau.DTO.DenunciaConEstadoDTO;
 import co.ufps.pdau.model.Categoria;
 import co.ufps.pdau.model.Denuncia;
 import co.ufps.pdau.model.Estado;
@@ -84,6 +85,20 @@ public class DenunciaController {
     public ResponseEntity<String> getTokenByDenunciaId(@PathVariable Long id) {
         String token = denunciaService.getTokenByDenunciaId(id);
         return ResponseEntity.ok(token);
+    }
+
+    @GetMapping("/token/{token}")
+    public ResponseEntity<DenunciaConEstadoDTO> getDenunciaByToken(@PathVariable String token) {
+        return denunciaService.getDenunciaByToken(token)
+                .map(denuncia -> {
+                    DenunciaConEstadoDTO dto = new DenunciaConEstadoDTO(
+                            denuncia.getTitulo(),
+                            denuncia.getDescripcion(),
+                            denuncia.getEstado().getNombre()
+                    );
+                    return ResponseEntity.ok(dto);
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 }
 
