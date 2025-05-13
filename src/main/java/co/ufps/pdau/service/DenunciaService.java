@@ -55,5 +55,9 @@ public class DenunciaService {
                 .map(Denuncia::getTokenSeguimiento)
                 .orElseThrow(() -> new RuntimeException("Denuncia no encontrada"));
     }
+
+    public Optional<Denuncia> getDenunciaByToken(String token) {
+        return denunciaRepository.findByTokenSeguimiento(token);
+    }
 }
 

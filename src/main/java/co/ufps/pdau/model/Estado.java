@@ -1,5 +1,6 @@
 package co.ufps.pdau.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -22,7 +23,7 @@ public class Estado {
     private String descripcion;
 
     @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonBackReference
     private List<Denuncia> denuncias;
 }
 
