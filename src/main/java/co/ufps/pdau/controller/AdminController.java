@@ -49,11 +49,6 @@ public class AdminController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
-    public String welcome(){
-        return "Welcome to Admin Controller";
-    }
-
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
         LoginResponse response = adminService.login(request.getCorreo(), request.getContrasenia());

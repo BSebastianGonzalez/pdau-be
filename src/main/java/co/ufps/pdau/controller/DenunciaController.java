@@ -45,6 +45,7 @@ public class DenunciaController {
         denuncia.setTitulo(dto.getTitulo());
         denuncia.setDescripcion(dto.getDescripcion());
         denuncia.setCategorias(categorias);  // Asignar las categorías
+        denuncia.setArchivado(false);
 
         Estado estado = new Estado();
         estado.setId(1L); // ID del estado predeterminado
@@ -99,6 +100,26 @@ public class DenunciaController {
                     return ResponseEntity.ok(dto);
                 })
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/archivadas")
+    public List<Denuncia> getDenunciasArchivadas() {
+        return denunciaService.getDenunciasArchivadas();
+    }
+
+    @GetMapping("/no-archivadas")
+    public List<Denuncia> getDenunciasNoArchivadas() {
+        return denunciaService.getDenunciasNoArchivadas();
+    }
+
+    @PutMapping("/{id}/toggle-archivado")
+    public ResponseEntity<Denuncia> toggleArchivado(@PathVariable Long id) {
+        try {
+            Denuncia updatedDenuncia = denunciaService.toggleArchivado(id);
+            return ResponseEntity.ok(updatedDenuncia);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
 
