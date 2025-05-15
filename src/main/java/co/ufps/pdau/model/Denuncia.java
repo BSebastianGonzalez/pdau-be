@@ -25,6 +25,8 @@ public class Denuncia {
     private String descripcion;
     private Date fechaCreacion;
     private String tokenSeguimiento;
+    private boolean archivado;
+    private Date fechaArchivado;
 
     @ManyToMany
     @JoinTable(
