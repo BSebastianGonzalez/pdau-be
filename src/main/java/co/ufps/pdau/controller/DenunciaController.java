@@ -40,6 +40,7 @@ public class DenunciaController {
         // Buscar categorías por ID
         List<Categoria> categorias = categoriaRepository.findAllById(dto.getCategoriaIds());
 
+
         // Crear la denuncia
         Denuncia denuncia = new Denuncia();
         denuncia.setTitulo(dto.getTitulo());
@@ -57,6 +58,7 @@ public class DenunciaController {
         // Crear la respuesta con el token
         Map<String, String> response = new HashMap<>();
         response.put("token", savedDenuncia.getTokenSeguimiento());
+        response.put("id", String.valueOf(savedDenuncia.getId()));
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

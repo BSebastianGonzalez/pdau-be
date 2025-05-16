@@ -41,4 +41,8 @@ public class Denuncia {
     @JoinColumn(name = "estado_id")
     @JsonManagedReference
     private Estado estado;
+
+    @OneToMany(mappedBy = "denuncia", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<ArchivoDenuncia> archivosDenuncia = new ArrayList<>();
 }
