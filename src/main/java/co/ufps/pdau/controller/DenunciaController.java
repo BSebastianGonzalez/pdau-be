@@ -47,6 +47,8 @@ public class DenunciaController {
         denuncia.setDescripcion(dto.getDescripcion());
         denuncia.setCategorias(categorias);  // Asignar las categorías
         denuncia.setArchivado(false);
+        denuncia.setFechaCreacion(new java.util.Date());
+        denuncia.setDepartamento(null);
 
         Estado estado = new Estado();
         estado.setId(1L); // ID del estado predeterminado
@@ -122,6 +124,23 @@ public class DenunciaController {
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PutMapping("/{idDenuncia}/departamento/{idDepartamento}")
+    public ResponseEntity<Denuncia> asignarDenunciaADepartamento(
+            @PathVariable Long idDenuncia, @PathVariable Long idDepartamento) {
+        try {
+            Denuncia denunciaActualizada = denunciaService.asignarDenunciaADepartamento(idDenuncia, idDepartamento);
+            return ResponseEntity.ok(denunciaActualizada);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/departamento/{idDepartamento}")
+    public ResponseEntity<List<Denuncia>> getDenunciasByDepartamento(@PathVariable Long idDepartamento) {
+        List<Denuncia> denuncias = denunciaService.getDenunciasByDepartamento(idDepartamento);
+        return ResponseEntity.ok(denuncias);
     }
 }
 
