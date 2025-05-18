@@ -10,4 +10,5 @@ public interface DenunciaRepository extends JpaRepository<Denuncia, Long> {
     List<Denuncia> findByCategorias_Id(Long categoriaId);
     Optional<Denuncia> findByTokenSeguimiento(String token);
     List<Denuncia> findByArchivado(boolean archivado);
+    List<Denuncia> findByDepartamento_Id(Long idDepartamento);
 }

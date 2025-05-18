@@ -1,7 +1,9 @@
 package co.ufps.pdau.service;
 
 import co.ufps.pdau.model.Denuncia;
+import co.ufps.pdau.model.Departamento;
 import co.ufps.pdau.repository.DenunciaRepository;
+import co.ufps.pdau.repository.DepartamentoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ import java.util.UUID;
 public class DenunciaService {
     @Autowired
     private final DenunciaRepository denunciaRepository;
+
+    @Autowired
+    private final DepartamentoRepository departamentoRepository;
 
     public List<Denuncia> getAllDenuncias() {
         return denunciaRepository.findAll();
@@ -39,6 +44,10 @@ public class DenunciaService {
             denuncia.setFechaCreacion(denunciaDetails.getFechaCreacion());
             denuncia.setTokenSeguimiento(denunciaDetails.getTokenSeguimiento());
             denuncia.setArchivado(denunciaDetails.isArchivado());
+            denuncia.setFechaArchivado(denunciaDetails.getFechaArchivado());
+            denuncia.setCategorias(denunciaDetails.getCategorias());
+            denuncia.setEstado(denunciaDetails.getEstado());
+            denuncia.setDepartamento(denunciaDetails.getDepartamento());
             return denunciaRepository.save(denuncia);
         }).orElseThrow(() -> new RuntimeException("Denuncia not found"));
     }
@@ -74,6 +83,19 @@ public class DenunciaService {
             denuncia.setArchivado(!denuncia.isArchivado());
             return denunciaRepository.save(denuncia);
         }).orElseThrow(() -> new RuntimeException("Denuncia no encontrada"));
+    }
+
+    public Denuncia asignarDenunciaADepartamento(Long idDenuncia, Long idDepartamento) {
+        return denunciaRepository.findById(idDenuncia).map(denuncia -> {
+            Departamento departamento = departamentoRepository.findById(idDepartamento)
+                    .orElseThrow(() -> new RuntimeException("Departamento no encontrado"));
+            denuncia.setDepartamento(departamento);
+            return denunciaRepository.save(denuncia);
+        }).orElseThrow(() -> new RuntimeException("Denuncia no encontrada"));
+    }
+
+    public List<Denuncia> getDenunciasByDepartamento(Long idDepartamento) {
+        return denunciaRepository.findByDepartamento_Id(idDepartamento);
     }
 }
 
