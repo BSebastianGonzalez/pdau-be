@@ -2,6 +2,7 @@ package co.ufps.pdau.service;
 
 import co.ufps.pdau.model.Denuncia;
 import co.ufps.pdau.model.Departamento;
+import co.ufps.pdau.model.Estado;
 import co.ufps.pdau.repository.DenunciaRepository;
 import co.ufps.pdau.repository.DepartamentoRepository;
 import lombok.RequiredArgsConstructor;
@@ -96,6 +97,15 @@ public class DenunciaService {
 
     public List<Denuncia> getDenunciasByDepartamento(Long idDepartamento) {
         return denunciaRepository.findByDepartamento_Id(idDepartamento);
+    }
+
+    public Denuncia actualizarEstadoDenuncia(Long idDenuncia, Long idEstado) {
+        return denunciaRepository.findById(idDenuncia).map(denuncia -> {
+            Estado estado = new Estado();
+            estado.setId(idEstado);
+            denuncia.setEstado(estado);
+            return denunciaRepository.save(denuncia);
+        }).orElseThrow(() -> new RuntimeException("Denuncia no encontrada"));
     }
 }
 
