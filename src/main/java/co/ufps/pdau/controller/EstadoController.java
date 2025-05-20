@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/estados")
@@ -30,18 +31,38 @@ public class EstadoController {
 
     @PostMapping
     public Estado createEstado(@RequestBody EstadoDTO estadoDTO) {
-        return estadoService.createEstado(new Estado(null, estadoDTO.getNombre(), estadoDTO.getDescripcion(), new ArrayList<>()));
+        // Crear el nuevo estado con una lista vacía de denuncias y asignar directamente la lista de Longs
+        Estado nuevoEstado = new Estado(
+                null,
+                estadoDTO.getNombre(),
+                estadoDTO.getDescripcion(),
+                new ArrayList<>(), // Lista vacía de denuncias
+                estadoDTO.getSiguientes() // Asignar directamente la lista de Longs
+        );
+
+        return estadoService.createEstado(nuevoEstado);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Estado> updateEstado(@PathVariable Long id, @RequestBody EstadoDTO estadoDTO) {
         try {
-            Estado updatedEstado = estadoService.updateEstado(id, new Estado(null, estadoDTO.getNombre(), estadoDTO.getDescripcion(), new ArrayList<>()));
-            return ResponseEntity.ok(updatedEstado);
+            // Verificar si el estado existe
+            Estado estadoActual = estadoService.getEstadoById(id)
+                    .orElseThrow(() -> new RuntimeException("Estado no encontrado con ID: " + id));
+
+            // Actualizar los datos del estado
+            estadoActual.setNombre(estadoDTO.getNombre());
+            estadoActual.setDescripcion(estadoDTO.getDescripcion());
+            estadoActual.setSiguientes(estadoDTO.getSiguientes()); // Asignar directamente la lista de Longs
+
+            // Guardar el estado actualizado
+            Estado savedEstado = estadoService.updateEstado(id, estadoActual);
+            return ResponseEntity.ok(savedEstado);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEstado(@PathVariable Long id) {

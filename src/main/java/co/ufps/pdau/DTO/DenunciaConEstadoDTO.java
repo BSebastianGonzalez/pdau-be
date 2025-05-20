@@ -1,5 +1,6 @@
 package co.ufps.pdau.DTO;
 
+import co.ufps.pdau.model.Estado;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,5 +9,5 @@ import lombok.Data;
 public class DenunciaConEstadoDTO {
     private String titulo;
     private String descripcion;
-    private String estadoNombre;
+    private Estado estado;
 }

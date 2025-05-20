@@ -99,7 +99,7 @@ public class DenunciaController {
                     DenunciaConEstadoDTO dto = new DenunciaConEstadoDTO(
                             denuncia.getTitulo(),
                             denuncia.getDescripcion(),
-                            denuncia.getEstado().getNombre()
+                            denuncia.getEstado()
                     );
                     return ResponseEntity.ok(dto);
                 })

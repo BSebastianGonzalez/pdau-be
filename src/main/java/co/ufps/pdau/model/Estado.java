@@ -25,5 +25,8 @@ public class Estado {
     @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private List<Denuncia> denuncias;
+
+    @ElementCollection
+    private List<Long> siguientes = new ArrayList<>();
 }
 
