@@ -142,5 +142,16 @@ public class DenunciaController {
         List<Denuncia> denuncias = denunciaService.getDenunciasByDepartamento(idDepartamento);
         return ResponseEntity.ok(denuncias);
     }
+
+    @PutMapping("/{idDenuncia}/estado/{idEstado}")
+    public ResponseEntity<Denuncia> actualizarEstadoDenuncia(
+            @PathVariable Long idDenuncia, @PathVariable Long idEstado) {
+        try {
+            Denuncia denunciaActualizada = denunciaService.actualizarEstadoDenuncia(idDenuncia, idEstado);
+            return ResponseEntity.ok(denunciaActualizada);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
 
