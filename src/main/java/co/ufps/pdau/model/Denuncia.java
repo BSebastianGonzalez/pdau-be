@@ -49,4 +49,8 @@ public class Denuncia {
     @JoinColumn(name = "departamento_id")
     @JsonManagedReference
     private Departamento departamento;
+
+    @OneToMany(mappedBy = "denuncia", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<CambioEstado> cambiosEstado = new ArrayList<>();
 }
