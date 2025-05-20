@@ -53,4 +53,8 @@ public class Denuncia {
     @OneToMany(mappedBy = "denuncia", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private List<CambioEstado> cambiosEstado = new ArrayList<>();
+
+    @OneToMany(mappedBy = "denuncia", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<ArchivarDenuncia> historialArchivado = new ArrayList<>();
 }
