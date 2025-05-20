@@ -31,8 +31,10 @@ public class EstadoService {
         return estadoRepository.findById(id).map(estado -> {
             estado.setNombre(estadoDetails.getNombre());
             estado.setDescripcion(estadoDetails.getDescripcion());
+            estado.setSiguientes(estadoDetails.getSiguientes());
+            estado.setDenuncias(estadoDetails.getDenuncias());
             return estadoRepository.save(estado);
-        }).orElseThrow(() -> new RuntimeException("Estado not found"));
+        }).orElseThrow(() -> new RuntimeException("Estado no encontrado"));
     }
 
     public void deleteEstado(Long id) {
