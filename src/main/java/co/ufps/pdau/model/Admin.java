@@ -30,5 +30,7 @@ public class Admin{
     @JsonBackReference
     private List<CambioEstado> cambiosEstado = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<ComentarioDenuncia> comentariosDenuncia = new ArrayList<>();
 }
