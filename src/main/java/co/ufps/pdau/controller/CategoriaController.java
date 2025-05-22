@@ -14,6 +14,7 @@ import java.util.List;
 public class CategoriaController {
     private final CategoriaService categoriaService;
 
+    @CrossOrigin(origins = "https://pdau-fe.vercel.app/", allowCredentials = "true")
     @GetMapping("/list")
     public List<Categoria> getAllCategorias() {
         return categoriaService.getAllCategorias();
