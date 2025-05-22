@@ -16,8 +16,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("*")
+                .allowedOrigins("https://pdau-fe.vercel.app/") // Add your frontend URL here
+                .allowedOrigins("http://localhost:5374")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*"); // permite todos los headers necesarios
+                .allowedHeaders("Authorization", "Content-Type", "X-Requested-With")
+                .allowCredentials(true)
+                .maxAge(3600);
     }
 }
