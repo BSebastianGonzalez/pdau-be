@@ -14,7 +14,7 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
 
-        config.addAllowedOrigin("https://pdau-fe.vercel.app/");
+        config.addAllowedOrigin("https://pdau-fe.vercel.app");
 
         config.addAllowedOrigin("http://localhost:5173");// Add your frontend URL here
 
