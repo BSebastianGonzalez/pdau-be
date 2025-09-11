@@ -1,5 +1,6 @@
 package co.ufps.pdau.controller;
 
+import co.ufps.pdau.DTO.CategoriaDTO;
 import co.ufps.pdau.model.Categoria;
 import co.ufps.pdau.service.CategoriaService;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,11 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public Categoria createCategoria(@RequestBody Categoria categoria) {
+    public Categoria createCategoria(@RequestBody CategoriaDTO categoriaDTO) {
+
+        Categoria categoria = new Categoria();
+        categoria.setNombre(categoriaDTO.getTitulo());
+        categoria.setDescripcion(categoriaDTO.getDescripcion());
         return categoriaService.createCategoria(categoria);
     }
 
