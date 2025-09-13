@@ -39,6 +39,7 @@ co\ufps\pdau\repository\EstadoRepository.class
 co\ufps\pdau\service\EstadoService.class
 co\ufps\pdau\DTO\CategoriaDTO.class
 co\ufps\pdau\model\CambioEstado.class
+co\ufps\pdau\DTO\AdminDTO.class
 co\ufps\pdau\DTO\DenunciaConEstadoDTO.class
 co\ufps\pdau\DTO\DepartamentoDTO.class
 co\ufps\pdau\model\Estado.class
