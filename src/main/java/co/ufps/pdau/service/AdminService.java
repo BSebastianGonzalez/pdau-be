@@ -5,6 +5,7 @@ import co.ufps.pdau.model.Admin;
 import co.ufps.pdau.repository.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,8 @@ import java.util.Optional;
 public class AdminService {
     @Autowired
     private final AdminRepository adminRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<Admin> getAllAdmins() {
         return adminRepository.findAll();
@@ -25,6 +28,7 @@ public class AdminService {
     }
 
     public Admin createAdmin(Admin admin) {
+        admin.setContrasenia(passwordEncoder.encode(admin.getContrasenia()));
         return adminRepository.save(admin);
     }
 
