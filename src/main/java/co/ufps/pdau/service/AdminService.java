@@ -51,17 +51,13 @@ public class AdminService {
     }
 
     public LoginResponse login(String correo, String contrasenia) {
-        Optional<Admin> adminOptional = adminRepository.findByCorreo(correo);
+        Admin admin = adminRepository.findByCorreo(correo)
+                .orElseThrow(() -> new RuntimeException("Correo no registrado"));
 
-        if (adminOptional.isPresent()) {
-            Admin admin = adminOptional.get();
-            if (admin.getContrasenia().equals(contrasenia)) {
-                return new LoginResponse(true, "Inicio de sesión exitoso", admin);
-            } else {
-                return new LoginResponse(false, "Contraseña incorrecta", null);
-            }
-        } else {
-            return new LoginResponse(false, "Correo no registrado", null);
+        if (!passwordEncoder.matches(contrasenia, admin.getContrasenia())) {
+            return new LoginResponse(false, "Contraseña incorrecta", null);
         }
+
+        return new LoginResponse(true, "Inicio de sesión exitoso", admin);
     }
 }
