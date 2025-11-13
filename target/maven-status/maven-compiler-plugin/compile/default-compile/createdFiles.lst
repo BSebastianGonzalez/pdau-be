@@ -7,13 +7,16 @@ co\ufps\pdau\model\ComentarioDenuncia.class
 co\ufps\pdau\service\CambioEstadoService.class
 co\ufps\pdau\model\Denuncia.class
 co\ufps\pdau\service\AdminService.class
+co\ufps\pdau\DTO\ResetPasswordRequest.class
 co\ufps\pdau\model\Categoria.class
 co\ufps\pdau\controller\EstadoController.class
 co\ufps\pdau\service\ComentarioDenunciaService.class
+co\ufps\pdau\service\PasswordResetService.class
 co\ufps\pdau\DTO\ArchivarDenunciaDTO.class
 co\ufps\pdau\repository\DenunciaRepository.class
 co\ufps\pdau\repository\DepartamentoRepository.class
 co\ufps\pdau\service\DepartamentoService.class
+co\ufps\pdau\model\PasswordResetToken.class
 co\ufps\pdau\config\WebConfig.class
 co\ufps\pdau\service\ArchivarDenunciaService.class
 co\ufps\pdau\controller\DepartamentoController.class
@@ -21,6 +24,7 @@ co\ufps\pdau\repository\ArchivoDenunciaRepository.class
 co\ufps\pdau\service\ArchivoDenunciaService.class
 co\ufps\pdau\config\CloudinaryConfig.class
 co\ufps\pdau\DTO\ComentarioDenunciaDTO.class
+co\ufps\pdau\repository\PasswordResetTokenRepository.class
 co\ufps\pdau\model\Role.class
 co\ufps\pdau\model\Departamento.class
 co\ufps\pdau\model\Admin.class
@@ -34,6 +38,7 @@ co\ufps\pdau\PdauApplication.class
 co\ufps\pdau\controller\CambioEstadoController.class
 co\ufps\pdau\DTO\LoginRequest.class
 co\ufps\pdau\repository\ArchivarDenunciaRepository.class
+co\ufps\pdau\config\PasswordEncoderConfig.class
 co\ufps\pdau\controller\ComentarioDenunciaController.class
 co\ufps\pdau\repository\EstadoRepository.class
 co\ufps\pdau\service\EstadoService.class
