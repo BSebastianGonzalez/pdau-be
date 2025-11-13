@@ -3,20 +3,24 @@ package co.ufps.pdau.controller;
 import co.ufps.pdau.DTO.AdminDTO;
 import co.ufps.pdau.DTO.LoginRequest;
 import co.ufps.pdau.DTO.LoginResponse;
+import co.ufps.pdau.DTO.ResetPasswordRequest;
 import co.ufps.pdau.model.Admin;
 import co.ufps.pdau.model.Role;
 import co.ufps.pdau.service.AdminService;
+import co.ufps.pdau.service.PasswordResetService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/admins")
 @RequiredArgsConstructor
 public class AdminController {
     private final AdminService adminService;
+    private final PasswordResetService passwordResetService;
 
     @GetMapping("/list")
     public List<Admin> getAllAdmins() {
@@ -79,5 +83,18 @@ public class AdminController {
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
         LoginResponse response = adminService.login(request.getCorreo(), request.getContrasenia());
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<String> forgotPassword(@RequestBody Map<String, String> request) {
+        String correo = request.get("correo");
+        passwordResetService.sendResetLink(correo);
+        return ResponseEntity.ok("Se ha enviado un enlace de recuperación al correo.");
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordRequest request) {
+        passwordResetService.resetPassword(request.getToken(), request.getNewPassword());
+        return ResponseEntity.ok("La contraseña ha sido cambiada correctamente.");
     }
 }

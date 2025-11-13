@@ -1,4 +1,5 @@
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\config\CloudinaryConfig.java
+C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\config\PasswordEncoderConfig.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\config\WebConfig.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\controller\AdminController.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\controller\ArchivarDenunciaController.java
@@ -20,6 +21,7 @@ C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\DTO\Depart
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\DTO\EstadoDTO.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\DTO\LoginRequest.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\DTO\LoginResponse.java
+C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\DTO\ResetPasswordRequest.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\model\Admin.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\model\ArchivarDenuncia.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\model\ArchivoDenuncia.java
@@ -29,6 +31,7 @@ C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\model\Come
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\model\Denuncia.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\model\Departamento.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\model\Estado.java
+C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\model\PasswordResetToken.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\model\Role.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\PdauApplication.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\repository\AdminRepository.java
@@ -40,6 +43,7 @@ C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\repository
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\repository\DenunciaRepository.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\repository\DepartamentoRepository.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\repository\EstadoRepository.java
+C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\repository\PasswordResetTokenRepository.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\service\AdminService.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\service\ArchivarDenunciaService.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\service\ArchivoDenunciaService.java
@@ -49,3 +53,4 @@ C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\service\Co
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\service\DenunciaService.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\service\DepartamentoService.java
 C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\service\EstadoService.java
+C:\Users\SEBASTIAN\OneDrive\Documents\pdau\src\main\java\co\ufps\pdau\service\PasswordResetService.java
