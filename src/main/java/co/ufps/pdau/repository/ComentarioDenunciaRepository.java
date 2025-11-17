@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ComentarioDenunciaRepository extends JpaRepository<ComentarioDenuncia, Long> {
     List<ComentarioDenuncia> findByDenunciaId(Long idDenuncia);
+    List<ComentarioDenuncia> findByAdminId(Long adminId);
 }

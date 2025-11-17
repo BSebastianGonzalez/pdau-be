@@ -35,4 +35,8 @@ public class ComentarioDenunciaService {
     public List<ComentarioDenuncia> getComentariosByDenunciaId(Long idDenuncia) {
         return comentarioDenunciaRepository.findByDenunciaId(idDenuncia);
     }
+
+    public List<ComentarioDenuncia> getComentariosByAdminId(Long adminId) {
+        return comentarioDenunciaRepository.findByAdminId(adminId);
+    }
 }

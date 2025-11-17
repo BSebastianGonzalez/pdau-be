@@ -35,4 +35,8 @@ public class CambioEstadoService {
     public List<CambioEstado> getCambiosEstadoByDenunciaId(Long idDenuncia) {
         return cambioEstadoRepository.findByDenunciaId(idDenuncia);
     }
+
+    public List<CambioEstado> getCambiosEstadoByAdminId(Long adminId) {
+        return cambioEstadoRepository.findByAdminId(adminId);
+    }
 }
