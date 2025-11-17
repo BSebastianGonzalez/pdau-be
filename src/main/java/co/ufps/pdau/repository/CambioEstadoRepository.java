@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CambioEstadoRepository extends JpaRepository<CambioEstado, Long> {
     List<CambioEstado> findByDenunciaId(Long idDenuncia);
+    List<CambioEstado> findByAdminId(Long adminId);
 }

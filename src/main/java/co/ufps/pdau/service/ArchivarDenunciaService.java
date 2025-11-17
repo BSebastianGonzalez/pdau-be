@@ -31,4 +31,8 @@ public class ArchivarDenunciaService {
     public void deleteArchivarDenuncia(Long id) {
         archivarDenunciaRepository.deleteById(id);
     }
+
+    public List<ArchivarDenuncia> getArchivarDenunciasByAdminId(Long adminId) {
+        return archivarDenunciaRepository.findByAdminId(adminId);
+    }
 }

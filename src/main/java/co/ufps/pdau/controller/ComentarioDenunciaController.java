@@ -69,4 +69,13 @@ public class ComentarioDenunciaController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/admin/{adminId}")
+    public ResponseEntity<List<ComentarioDenuncia>> getByAdminId(@PathVariable Long adminId) {
+        List<ComentarioDenuncia> lista = comentarioDenunciaService.getComentariosByAdminId(adminId);
+        if (lista == null || lista.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(lista);
+    }
 }

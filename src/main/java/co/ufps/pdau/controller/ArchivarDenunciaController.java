@@ -76,4 +76,13 @@ public class ArchivarDenunciaController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/admin/{adminId}")
+    public ResponseEntity<List<ArchivarDenuncia>> getByAdminId(@PathVariable Long adminId) {
+        List<ArchivarDenuncia> lista = archivarDenunciaService.getArchivarDenunciasByAdminId(adminId);
+        if (lista == null || lista.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(lista);
+    }
 }

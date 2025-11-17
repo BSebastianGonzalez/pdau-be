@@ -93,4 +93,13 @@ public class CambioEstadoController {
         }
         return ResponseEntity.ok(cambiosEstado);
     }
+
+    @GetMapping("/admin/{adminId}")
+    public ResponseEntity<List<CambioEstado>> getByAdminId(@PathVariable Long adminId) {
+        List<CambioEstado> lista = cambioEstadoService.getCambiosEstadoByAdminId(adminId);
+        if (lista == null || lista.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(lista);
+    }
 }
