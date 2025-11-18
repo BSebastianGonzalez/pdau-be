@@ -51,7 +51,7 @@ public class PasswordResetService {
         tokenRepository.save(resetToken);
 
         // Crear enlace de restablecimiento
-        String link = "http://localhost:5173/admin_password_confirm?token=" + token;
+        String link = "https://pdau-fe.vercel.app/admin_password_confirm?token=" + token;
 
         // Renderizar plantilla HTML
         Context context = new Context();
